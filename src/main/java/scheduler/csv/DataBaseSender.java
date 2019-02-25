@@ -15,7 +15,7 @@ public class DataBaseSender {
 
     public List<HomeOfficeRecord> getHomeOfficeRecordFromFile(String filename) throws IOException{
         String data = readCsvFile(filename);
-        List<String> records = Arrays.asList(data.split("\n"));
+        List<String> records = Arrays.asList(data.split("\r\n"));
         return records.stream().map(record -> {
             String[] fields = record.split(",");
             return new HomeOfficeRecord(Long.getLong(fields[0]),fields[1],fields[2],fields[3]);

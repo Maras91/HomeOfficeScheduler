@@ -1,15 +1,14 @@
 package scheduler.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "HomeOffice")
 public class HomeOfficeRecord {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long dayNumber;
 
     private String firstName;
