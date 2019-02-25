@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class DataBaseSender {
+public class csvReader {
 
     public List<HomeOfficeRecord> getHomeOfficeRecordFromFile(String filename) throws IOException{
         String data = readCsvFile(filename);
@@ -23,7 +23,7 @@ public class DataBaseSender {
 
     }
     private String readCsvFile (String fileName) throws IOException {
-        InputStream inputStream = DataBaseSender.class.getResourceAsStream(fileName);
+        InputStream inputStream = csvReader.class.getResourceAsStream(fileName);
         return IOUtils.toString(inputStream, "UTF-8");
     }
 }

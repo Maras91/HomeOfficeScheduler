@@ -2,16 +2,18 @@ package scheduler.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import scheduler.csv.DataBaseSender;
+import scheduler.csv.csvReader;
 import scheduler.model.HomeOfficeRecord;
 import scheduler.repository.HomeOfficeRepository;
 
 import java.io.IOException;
 import java.util.List;
 
-@RestController
+@Controller
 public class HomeOfficeController {
 
     @Autowired
@@ -21,16 +23,18 @@ public class HomeOfficeController {
     private String fileName;
 
     @Autowired
-    private DataBaseSender dataBaseSender;
+    private csvReader csvReader;
 
-    @GetMapping("/allho")
-    public List<HomeOfficeRecord> getAllHO() {
-        return homeOfficeRepository.findAll();
+    @PostMapping("/showAll")
+    public String getAllHO(Model model) {
+        model.addAttribute("HomeOfficeRecords",homeOfficeRepository.findAll());
+        return "index";
     }
 
-    @GetMapping("/add")
-    public void addRecords () throws IOException {
-        List<HomeOfficeRecord> homeOfficeRecords = dataBaseSender.getHomeOfficeRecordFromFile(fileName);
+    @PostMapping("/add")
+    public String addRecords (Model model) throws IOException {
+        List<HomeOfficeRecord> homeOfficeRecords = csvReader.getHomeOfficeRecordFromFile(fileName);
         homeOfficeRepository.saveAll(homeOfficeRecords);
+        return "index";
     }
 }

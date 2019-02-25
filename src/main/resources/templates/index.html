@@ -1,0 +1,41 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/index.css">
+        <title>Home Office Manager</title>
+    </head>
+    <body>
+        <div>
+            <h1>Welcome to home office manager</h1>
+            <div id="menu">
+                <form action="/showAll" method="post">
+                    <button type="submit">Show all</button>
+                </form>
+                <form action="/add" method="post">
+                    <button type="submit">Add from file</button>
+                </form>
+            </div>
+            <div id="result">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>first name</th>
+                        <th>last name</th>
+                        <th>home office</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="hoRecord : ${HomeOfficeRecords}">
+                            <td> <span th:text="${hoRecord.dayNumber}">id</span></td>
+                            <td> <span th:text="${hoRecord.firstName}">first name</span></td>
+                            <td><span th:text="${hoRecord.lastName}">last name</span></td>
+                            <td><span th:text="${hoRecord.isOnHomeOffice}">home office</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
