@@ -20,7 +20,8 @@
                 <table>
                     <thead>
                     <tr>
-                        <th>id</th>
+                        <th>das id</th>
+                        <th>date</th>
                         <th>first name</th>
                         <th>last name</th>
                         <th>home office</th>
@@ -28,7 +29,8 @@
                     </thead>
                     <tbody>
                         <tr th:each="hoRecord : ${HomeOfficeRecords}">
-                            <td> <span th:text="${hoRecord.dayNumber}">id</span></td>
+                            <td> <span th:text="${hoRecord.dasId}">id</span></td>
+                            <td> <span th:text="${hoRecord.day}">id</span></td>
                             <td> <span th:text="${hoRecord.firstName}">first name</span></td>
                             <td><span th:text="${hoRecord.lastName}">last name</span></td>
                             <td><span th:text="${hoRecord.isOnHomeOffice}">home office</span></td>

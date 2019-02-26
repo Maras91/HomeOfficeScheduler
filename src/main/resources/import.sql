@@ -1,3 +1,3 @@
-INSERT INTO Home_Office ( day_Number, first_Name, last_Name, is_On_Home_Office) VALUES (1,'Rysiek','Zklanu','Y');
-INSERT INTO Home_Office ( day_Number, first_Name, last_Name, is_On_Home_Office) VALUES (2,'Donald','Tusk','Y');
-INSERT INTO Home_Office ( day_Number, first_Name, last_Name, is_On_Home_Office) VALUES (3,'Ja','Mojenazwisko','Y');
+INSERT INTO Home_Office ( das_Id, day , first_Name, last_Name, is_On_Home_Office) VALUES ('A1234','2019-02-14','Rysiek','Zklanu','y');
+INSERT INTO Home_Office ( das_Id, day, first_Name, last_Name, is_On_Home_Office) VALUES ('A234','2019-02-15','Donald','Tusk','y');
+INSERT INTO Home_Office ( das_Id, day, first_Name, last_Name, is_On_Home_Office) VALUES ('A123','2019-02-17','Ja','Mojenazwisko','y');

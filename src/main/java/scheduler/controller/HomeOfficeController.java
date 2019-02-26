@@ -35,6 +35,7 @@ public class HomeOfficeController {
     public String addRecords (Model model) throws IOException {
         List<HomeOfficeRecord> homeOfficeRecords = csvReader.getHomeOfficeRecordFromFile(fileName);
         homeOfficeRepository.saveAll(homeOfficeRecords);
+        model.addAttribute("HomeOfficeRecords",homeOfficeRepository.findAll());
         return "index";
     }
 }

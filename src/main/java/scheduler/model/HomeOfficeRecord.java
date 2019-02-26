@@ -2,14 +2,18 @@ package scheduler.model;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "HomeOffice")
+@IdClass(HomeOfficeId.class)
 public class HomeOfficeRecord {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long dayNumber;
+    private String dasId;
+    @Id
+    private LocalDate day;
 
     private String firstName;
 
@@ -20,15 +24,20 @@ public class HomeOfficeRecord {
     public HomeOfficeRecord() {
     }
 
-    public HomeOfficeRecord(Long dayNumber, String firstName, String lastName, String isOnHomeOffice) {
-        this.dayNumber = dayNumber;
+    public HomeOfficeRecord(String dasId, LocalDate day, String firstName, String lastName, String isOnHomeOffice) {
+        this.dasId = dasId;
+        this.day = day;
         this.firstName = firstName;
         this.lastName = lastName;
         this.isOnHomeOffice = isOnHomeOffice;
     }
 
-    public Long getDayNumber() {
-        return dayNumber;
+    public String getDasId() {
+        return dasId;
+    }
+
+    public LocalDate getDay() {
+        return day;
     }
 
     public String getFirstName() {
