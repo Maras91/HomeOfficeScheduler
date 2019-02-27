@@ -36,6 +36,16 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.4.1.Final</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-search-orm</artifactId>-->
+            <!--<version>5.11.1.Final</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.infinispan</groupId>-->
+            <!--<artifactId>infinispan-directory-provider</artifactId>-->
+            <!--<version>9.2.2.Final</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
