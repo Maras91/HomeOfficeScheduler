@@ -17,10 +17,18 @@
                 </form>
                 <br>
                 <form action="/query" method="post">
-                    <!--Field : <br>-->
-                    <!--<input type="text" name="field"><br>-->
-                    Last Name : <br>
-                    <input type="text" name="lastName"><br>
+                    Field :
+                    <br>
+                    <select name="field">
+                        <option value="firstName">First Name</option>
+                        <option value="lastName">Last Name</option>
+                        <option value="dasId">DAS ID</option>
+                        <option value="day">Date</option>
+                    </select>
+                    <br>
+                    Vale :
+                    <br>
+                    <input type="text" name="value"><br>
                     <button type="submit">Search</button>
                 </form>
             </div>
