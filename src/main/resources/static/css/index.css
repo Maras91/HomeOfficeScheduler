@@ -2,7 +2,7 @@ html {
     margin: auto;
 }
 body {
-    background: white;
+    background: bisque;
 }
 .h1 {
     text-align: center;
@@ -17,4 +17,9 @@ form {
 }
 span {
     margin: 5px;
+}
+#result {
+    height: 600px;
+    overflow-x: auto;
+    float: left;
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import scheduler.csv.csvReader;
+import scheduler.csv.CsvReader;
 import scheduler.model.FieldNames;
 import scheduler.model.HomeOfficeRecord;
 import scheduler.repository.HomeOfficeRepository;
@@ -26,8 +26,11 @@ public class HomeOfficeController {
     @Value("${csv.file.name}")
     private String fileName;
 
+    @Value("${data.format}")
+    private String dataFormat;
+
     @Autowired
-    private csvReader csvReader;
+    private CsvReader CsvReader;
 
     @PostMapping("/showAll")
     public String getAllHO(Model model) {
@@ -37,7 +40,7 @@ public class HomeOfficeController {
 
     @PostMapping("/add")
     public String addRecords (Model model) throws IOException {
-        List<HomeOfficeRecord> homeOfficeRecords = csvReader.getHomeOfficeRecordFromFile(fileName);
+        List<HomeOfficeRecord> homeOfficeRecords = CsvReader.getHomeOfficeRecordFromFile(fileName,dataFormat);
         homeOfficeRepository.saveAll(homeOfficeRecords);
         model.addAttribute("HomeOfficeRecords",homeOfficeRepository.findAll());
         return "index";
@@ -56,8 +59,8 @@ public class HomeOfficeController {
             findPerson = homeOfficeRepository.findByDasId(value);
         }
         if (field==FieldNames.day) {
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            findPerson = homeOfficeRepository.findByDay(LocalDate.parse(value,dateFormat));
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(dataFormat);
+            findPerson = homeOfficeRepository.findByDay(LocalDate.parse(value,dateFormatter));
         }
         model.addAttribute("HomeOfficeRecords", findPerson);
         return "index";

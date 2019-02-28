@@ -13,21 +13,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class csvReader {
+public class CsvReader {
 
-    public List<HomeOfficeRecord> getHomeOfficeRecordFromFile(String filename) throws IOException{
+    public List<HomeOfficeRecord> getHomeOfficeRecordFromFile(String filename, String dataFormat) throws IOException{
         String data = readCsvFile(filename);
-        List<String> records = Arrays.asList(data.split("\r\n"));
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        List<String> records = Arrays.asList(data.replace("\r","").split("\n"));
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(dataFormat);
 
         return records.stream().map(record -> {
             String[] fields = record.split(",");
-            return new HomeOfficeRecord(fields[0],LocalDate.parse(fields[1],dateFormat),fields[2],fields[3],fields[4]);
+            return new HomeOfficeRecord(fields[0],LocalDate.parse(fields[1],dateFormatter),fields[2],fields[3],fields[4]);
         }).collect(Collectors.toList());
 
     }
     private String readCsvFile (String fileName) throws IOException {
-        InputStream inputStream = csvReader.class.getResourceAsStream(fileName);
+        InputStream inputStream = CsvReader.class.getResourceAsStream(fileName);
         return IOUtils.toString(inputStream, "UTF-8");
     }
 }

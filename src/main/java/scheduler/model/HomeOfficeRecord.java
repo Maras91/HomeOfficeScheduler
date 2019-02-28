@@ -2,13 +2,14 @@ package scheduler.model;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 
 @Entity
 @Table(name = "HomeOffice")
 @IdClass(HomeOfficeId.class)
-public class HomeOfficeRecord {
+public class HomeOfficeRecord implements Serializable {
 
     @Id
     private String dasId;
